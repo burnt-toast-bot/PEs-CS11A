@@ -6,10 +6,9 @@ def second(list):       #defines a function that takes a list as an argument
 
 def sort_list(tuples):  #defines a function that takes tuples as an argument
     return sorted(tuples, key=second)   #returns the tuples sorted by the 
-                                        #second element using the functions 
-                                        #second()
+                                        #second element
 
-print(sort_list(tuple_list)) #calls the function sort_list() giving the 
+print(sort_list(tuple_list)) #calls the function sort_list giving the 
                              #list of tuples as an argument and prints
                              #the sorted list
 
