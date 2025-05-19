@@ -1,3 +1,6 @@
+import random  # Python Software Foundation (n.d.). Generate pseudo-random numbers. 
+               # Python.org. https://docs.python.org/3/library/random.html
+
 class Restaurant:
     
  # creates a class representing a restaurant
@@ -26,23 +29,31 @@ class Restaurant:
         else:
             print("Currently closed")
     
-    def recommend(self, *restaurants):
+    def recommend(*restaurants):
+        # create a list of open restaurants to recommend
+        # from a tuple containing arbitrary number of restaurants
+        yes_open = []
         for restaurant in restaurants:
-            if restaurant.open == True:
-                return restaurant
-            else:
+            if restaurant.open == False:
                 continue
+            else: # if restaurant is open add to the end of the list
+                yes_open.append(restaurant)
+        return yes_open # returns list after looping through entire tuple
 
-
+# create three instances of Restaurant
 restaurant1 = Restaurant("In-n-Out", "Burgers and fries", True)
 restaurant2 = Restaurant("Cafe Lago", "Italian", False)
-restaurant3 = Restaurant("daniel's broiler", "seafood", False)
+restaurant3 = Restaurant("daniel's broiler", "seafood", True)
 
 restaurant1.describe_restaurant()
 restaurant2.describe_restaurant()
 restaurant3.describe_restaurant()
 
+# call recommend() to get list of open restaurants
 opened = Restaurant.recommend(restaurant1, restaurant2, restaurant3)
 
-opened.describe_restaurant()
-opened.is_open()
+# selects random restaurant from list of open restaurants
+recommendation = random.choice(opened)
+
+recommendation.describe_restaurant()
+recommendation.is_open()
